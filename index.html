@@ -1,0 +1,2975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Light Ministry | Spreading God's Word Worldwide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Variables */
+        :root {
+            --primary: #3b82f6;
+            --primary-light: #93c5fd;
+            --secondary: #4b5563;
+            --accent: #f59e0b;
+            --light: #f3f4f6;
+            --dark: #1f2937;
+            --success: #10b981;
+            --danger: #ef4444;
+            --text: #4b5563;
+            --text-light: #9ca3af;
+            --bg-light: #ffffff;
+            --bg-dark: #111827;
+            --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --transition: all 0.3s ease;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 0.5rem;
+        }
+
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --primary: #60a5fa;
+            --primary-light: #3b82f6;
+            --secondary: #9ca3af;
+            --text: #e5e7eb;
+            --text-light: #d1d5db;
+            --bg-light: #1f2937;
+            --bg-dark: #111827;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--bg-light);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-light);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        button, .btn {
+            cursor: pointer;
+            font-family: inherit;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        button:hover, .btn:hover {
+            background: var(--primary-light);
+            box-shadow: var(--shadow);
+            transform: translateY(-2px);
+        }
+
+        button.secondary, .btn.secondary {
+            background: var(--secondary);
+        }
+
+        button.secondary:hover, .btn.secondary:hover {
+            background: #6b7280;
+        }
+
+        button.accent, .btn.accent {
+            background: var(--accent);
+        }
+
+        button.accent:hover, .btn.accent:hover {
+            background: #f59e0b;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -0.75rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .gap-1 { gap: 0.25rem; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-3 { gap: 0.75rem; }
+        .gap-4 { gap: 1rem; }
+        .gap-5 { gap: 1.25rem; }
+
+        .grid {
+            display: grid;
+        }
+
+        .grid-cols-1 { grid-template-columns: repeat(1, 1fr); }
+        .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+        .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+        .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+        .mt-1 { margin-top: 0.25rem; }
+        .mt-2 { margin-top: 0.5rem; }
+        .mt-3 { margin-top: 0.75rem; }
+        .mt-4 { margin-top: 1rem; }
+        .mt-5 { margin-top: 1.25rem; }
+        .mt-6 { margin-top: 1.5rem; }
+        .mt-8 { margin-top: 2rem; }
+        .mt-10 { margin-top: 2.5rem; }
+
+        .mb-1 { margin-bottom: 0.25rem; }
+        .mb-2 { margin-bottom: 0.5rem; }
+        .mb-3 { margin-bottom: 0.75rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-5 { margin-bottom: 1.25rem; }
+        .mb-6 { margin-bottom: 1.5rem; }
+        .mb-8 { margin-bottom: 2rem; }
+        .mb-10 { margin-bottom: 2.5rem; }
+
+        .p-1 { padding: 0.25rem; }
+        .p-2 { padding: 0.5rem; }
+        .p-3 { padding: 0.75rem; }
+        .p-4 { padding: 1rem; }
+        .p-5 { padding: 1.25rem; }
+        .p-6 { padding: 1.5rem; }
+
+        /* Header Styles */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .header {
+            background-color: rgba(31, 41, 55, 0.9);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+
+        [data-theme="dark"] .logo {
+            color: var(--light);
+        }
+
+        .logo svg {
+            width: 42px;
+            height: 42px;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            font-weight: 600;
+            color: var(--secondary);
+            position: relative;
+        }
+
+        [data-theme="dark"] .nav-link {
+            color: var(--text-light);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            cursor: pointer;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            min-width: 150px;
+            background: var(--bg-light);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            padding: 0.5rem 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: var(--transition);
+            z-index: 100;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            padding: 0.5rem 1rem;
+            display: block;
+            width: 100%;
+        }
+
+        .dropdown-item:hover {
+            background: var(--primary-light);
+            color: white;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+
+        [data-theme="dark"] .theme-toggle {
+            color: var(--text-light);
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 8rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/random/1920x1080/?church,mission') no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .world-map-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        /* Featured Sections */
+        .features {
+            background-color: var(--bg-light);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+        [data-theme="dark"] .feature-card {
+            background: var(--bg-dark);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-body {
+            padding: 1.5rem;
+        }
+
+        /* Devotional Section */
+        .devotional {
+            background-color: var(--light);
+            padding: 5rem 0;
+        }
+
+        [data-theme="dark"] .devotional {
+            background-color: var(--bg-dark);
+        }
+
+        .devotional-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        [data-theme="dark"] .devotional-card {
+            background: #2d3748;
+        }
+
+        .devotional-header {
+            padding: 2rem;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .devotional-date {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .devotional-verse {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .devotional-reference {
+            font-style: italic;
+        }
+
+        .devotional-body {
+            padding: 2rem;
+        }
+
+        .devotional-text {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .devotional-prayer {
+            font-style: italic;
+            padding-left: 1rem;
+            border-left: 3px solid var(--primary);
+            margin-top: 1.5rem;
+        }
+
+        .devotional-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        /* Mission Map */
+        .mission-map {
+            position: relative;
+            height: 500px;
+            margin: 2rem 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            background-color: #f0f9ff;
+        }
+
+        [data-theme="dark"] .mission-map {
+            background-color: #1e293b;
+        }
+
+        .map-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .map-country {
+            fill: #e2e8f0;
+            stroke: #cbd5e1;
+            stroke-width: 0.5;
+            transition: fill 0.3s;
+        }
+
+        [data-theme="dark"] .map-country {
+            fill: #334155;
+            stroke: #475569;
+        }
+
+        .map-country:hover {
+            fill: var(--primary-light);
+            cursor: pointer;
+        }
+
+        .map-marker {
+            fill: var(--accent);
+            stroke: white;
+            stroke-width: 2;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .map-marker:hover {
+            transform: scale(1.5);
+        }
+
+        .map-tooltip {
+            position: absolute;
+            background: white;
+            border-radius: var(--radius);
+            padding: 0.75rem;
+            box-shadow: var(--shadow);
+            font-size: 0.875rem;
+            max-width: 300px;
+            z-index: 10;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        [data-theme="dark"] .map-tooltip {
+            background: var(--bg-dark);
+            color: white;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--bg-light);
+        }
+
+        .testimonial-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .testimonial-slider {
+            overflow: hidden;
+            padding: 3rem 0;
+        }
+
+        .testimonial-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 0 1rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            height: 100%;
+            position: relative;
+        }
+
+        [data-theme="dark"] .testimonial-card {
+            background: var(--bg-dark);
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .testimonial-quote:before,
+        .testimonial-quote:after {
+            content: '"';
+            font-family: Georgia, serif;
+            font-size: 3rem;
+            color: var(--primary-light);
+            opacity: 0.5;
+            position: absolute;
+        }
+
+        .testimonial-quote:before {
+            top: -1.5rem;
+            left: -1rem;
+        }
+
+        .testimonial-quote:after {
+            bottom: -3rem;
+            right: -1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 700;
+            display: block;
+            margin-top: 1rem;
+        }
+
+        .testimonial-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+        }
+
+        .testimonial-flag {
+            width: 20px;
+            height: 15px;
+            object-fit: cover;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .testimonial-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: white;
+            color: var(--text);
+            border: 1px solid #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .testimonial-button {
+            background: var(--bg-dark);
+            border-color: #4b5563;
+        }
+
+        .testimonial-button:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .testimonial-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 2rem;
+        }
+
+        .testimonial-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .testimonial-dot {
+            background: #4b5563;
+        }
+
+        .testimonial-dot.active {
+            background: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Prayer Wall */
+        .prayer-wall {
+            background-color: var(--light);
+        }
+
+        [data-theme="dark"] .prayer-wall {
+            background-color: var(--bg-dark);
+        }
+
+        .prayer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .prayer-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .prayer-card {
+            background: #2d3748;
+        }
+
+        .prayer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .prayer-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .prayer-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .prayer-author {
+            font-weight: 600;
+        }
+
+        .prayer-date {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .prayer-country {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .prayer-flag {
+            width: 16px;
+            height: 12px;
+            object-fit: cover;
+            border-radius: 2px;
+        }
+
+        .prayer-text {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .prayer-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        [data-theme="dark"] .prayer-actions {
+            border-color: #4b5563;
+        }
+
+        .prayer-count {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .prayer-form {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        [data-theme="dark"] .prayer-form {
+            background: #2d3748;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: var(--radius);
+            background: white;
+            color: var(--text);
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .form-control {
+            background: #1f2937;
+            border-color: #4b5563;
+            color: var(--text-light);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Events */
+        .events {
+            background-color: var(--bg-light);
+        }
+
+        .event-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        [data-theme="dark"] .event-card {
+            background: var(--bg-dark);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .event-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-body {
+            padding: 1.5rem;
+            flex: 1;
+        }
+
+        .event-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .event-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-desc {
+            margin-bottom: 1.5rem;
+        }
+
+        .event-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        [data-theme="dark"] .event-footer {
+            background: #374151;
+            border-color: #4b5563;
+        }
+
+        .event-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-light);
+        }
+
+        /* Resources */
+        .resources {
+            background-color: var(--light);
+        }
+
+        [data-theme="dark"] .resources {
+            background-color: var(--bg-dark);
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        [data-theme="dark"] .resource-card {
+            background: #2d3748;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .resource-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .resource-body {
+            padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-tag {
+            display: inline-block;
+            background: var(--primary-light);
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+        }
+
+        .resource-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+
+        .resource-desc {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+
+        .resource-meta {
+            display: flex;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        [data-theme="dark"] .resource-meta {
+            border-color: #4b5563;
+        }
+
+        .resource-type {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .resource-languages {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* Donation Section */
+        .donation {
+            background: var(--primary);
+            color: white;
+            padding: 5rem 0;
+        }
+
+        .donation-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .donation-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .donation-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .donation-text {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .donation-stats {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .donation-stat {
+            text-align: center;
+        }
+
+        .donation-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.25rem;
+        }
+
+        .donation-label {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .donation-form {
+            flex: 1;
+            min-width: 300px;
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            color: var(--text);
+        }
+
+        [data-theme="dark"] .donation-form {
+            background: var(--bg-dark);
+            color: var(--text-light);
+        }
+
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .donation-option {
+            text-align: center;
+            border: 2px solid #e5e7eb;
+            border-radius: var(--radius);
+            padding: 1rem 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .donation-option {
+            border-color: #4b5563;
+        }
+
+        .donation-option:hover,
+        .donation-option.active {
+            border-color: var(--primary);
+            background: #f0f9ff;
+        }
+
+        [data-theme="dark"] .donation-option:hover,
+        [data-theme="dark"] .donation-option.active {
+            background: #2d3748;
+        }
+
+        .donation-option.active {
+            border-width: 2px;
+        }
+
+        .donation-amount {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .donation-frequency {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+
+        .donation-custom {
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .donation-currency {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            margin-right: 0.5rem;
+        }
+
+        .donation-input {
+            flex: 1;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-method {
+            flex: 1;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+            border-radius: var(--radius);
+            padding: 0.75rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .payment-method {
+            border-color: #4b5563;
+        }
+
+        .payment-method:hover,
+        .payment-method.active {
+            border-color: var(--primary);
+            background: #f0f9ff;
+        }
+
+        [data-theme="dark"] .payment-method:hover,
+        [data-theme="dark"] .payment-method.active {
+            background: #2d3748;
+        }
+
+        .payment-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background-color: #f0f9ff;
+            padding: 5rem 0;
+        }
+
+        [data-theme="dark"] .newsletter {
+            background-color: #1e293b;
+        }
+
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-text {
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border: 1px solid #e5e7eb;
+            border-right: none;
+            border-radius: var(--radius) 0 0 var(--radius);
+        }
+
+        [data-theme="dark"] .newsletter-input {
+            background: #1f2937;
+            border-color: #4b5563;
+            color: var(--text-light);
+        }
+
+        .newsletter-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-about {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-link {
+            color: white;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            opacity: 1;
+            color: var(--primary-light);
+        }
+
+        .footer-contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-contact-icon {
+            font-size: 1.25rem;
+            color: var(--primary-light);
+        }
+
+        .footer-contact-text {
+            opacity: 0.8;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social-link {
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .footer-social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Chat Bot */
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-window {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: none;
+        }
+
+        [data-theme="dark"] .chatbot-window {
+            background: var(--bg-dark);
+        }
+
+        .chatbot-header {
+            background: var(--primary);
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .chatbot-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .chatbot-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .chatbot-close {
+            cursor: pointer;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .chatbot-close:hover {
+            opacity: 1;
+        }
+
+        .chatbot-messages {
+            height: 300px;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .chatbot-message {
+            margin-bottom: 1rem;
+            display: flex;
+        }
+
+        .chatbot-message.user {
+            justify-content: flex-end;
+        }
+
+        .message-content {
+            max-width: 80%;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .chatbot-message.bot .message-content {
+            background: #f3f4f6;
+            border-top-left-radius: 0;
+        }
+
+        [data-theme="dark"] .chatbot-message.bot .message-content {
+            background: #374151;
+        }
+
+        .chatbot-message.user .message-content {
+            background: var(--primary);
+            color: white;
+            border-top-right-radius: 0;
+        }
+
+        .chatbot-input {
+            display: flex;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        [data-theme="dark"] .chatbot-input {
+            border-color: #4b5563;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            outline: none;
+            font-size: 0.95rem;
+            background: transparent;
+            color: var(--text);
+        }
+
+        .chatbot-input button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0 1.25rem;
+            cursor: pointer;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 300px;
+            height: 100vh;
+            background: white;
+            z-index: 1001;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+            padding: 2rem 1.5rem;
+            overflow-y: auto;
+        }
+
+        [data-theme="dark"] .mobile-menu {
+            background: var(--bg-dark);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .mobile-nav-items {
+            margin-bottom: 2rem;
+        }
+
+        .mobile-nav-item {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            padding: 0.75rem 0;
+            font-weight: 600;
+            color: var(--text);
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        [data-theme="dark"] .mobile-nav-link {
+            border-color: #4b5563;
+            color: var(--text-light);
+        }
+
+        .mobile-nav-link:hover {
+            color: var(--primary);
+        }
+
+        .mobile-language-switcher {
+            margin-bottom: 2rem;
+        }
+
+        .mobile-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        /* Responsive Styles */
+        @media screen and (max-width: 992px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .donation-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .donation-content {
+                text-align: center;
+            }
+
+            .donation-stats {
+                justify-content: center;
+            }
+
+            .grid-cols-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-cols-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-list, .header-actions {
+                display: none;
+            }
+
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .grid-cols-2, .grid-cols-3, .grid-cols-4 {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input {
+                border-radius: var(--radius);
+                border-right: 1px solid #e5e7eb;
+                margin-bottom: 1rem;
+            }
+
+            .newsletter-button {
+                border-radius: var(--radius);
+            }
+
+            .donation-options {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-methods {
+                flex-direction: column;
+            }
+
+            .chatbot-window {
+                width: 300px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+            }
+
+            .hero {
+                padding-top: 6rem;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .donation-title {
+                font-size: 1.75rem;
+            }
+
+            .prayer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chatbot-window {
+                width: calc(100vw - 40px);
+            }
+        }
+    </style>
+</head>
+<body data-theme="light">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container container">
+            <a href="#" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+                    <path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm0 384c-97.2 0-176-78.8-176-176S158.8 80 256 80s176 78.8 176 176-78.8 176-176 176z"/>
+                    <path d="M256 128c-70.4 0-128 57.6-128 128s57.6 128 128 128 128-57.6 128-128-57.6-128-128-128zm0 224c-52.9 0-96-43.1-96-96s43.1-96 96-96 96 43.1 96 96-43.1 96-96 96z"/>
+                    <path d="M256 160c-8.8 0-16 7.2-16 16v144c0 8.8 7.2 16 16 16s16-7.2 16-16V176c0-8.8-7.2-16-16-16z"/>
+                    <path d="M256 336c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16s16-7.2 16-16v-16c0-8.8-7.2-16-16-16z"/>
+                </svg>
+                Global Light Ministry
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#missions" class="nav-link">Missions</a></li>
+                    <li><a href="#resources" class="nav-link">Resources</a></li>
+                    <li><a href="#events" class="nav-link">Events</a></li>
+                    <li><a href="#prayer" class="nav-link">Prayer Wall</a></li>
+                    <li><a href="#donate" class="nav-link">Donate</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="dropdown">
+                    <div class="dropdown-toggle">
+                        <i class="fas fa-globe"></i>
+                        <span>English</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">English</a>
+                        <a href="#" class="dropdown-item">Español</a>
+                        <a href="#" class="dropdown-item">Français</a>
+                        <a href="#" class="dropdown-item">Deutsch</a>
+                        <a href="#" class="dropdown-item">中文</a>
+                        <a href="#" class="dropdown-item">العربية</a>
+                        <a href="#" class="dropdown-item">Русский</a>
+                        <a href="#" class="dropdown-item">Portuguese</a>
+                        <a href="#" class="dropdown-item">日本語</a>
+                        <a href="#" class="dropdown-item">हिन्दी</a>
+                    </div>
+                </div>
+                <button class="theme-toggle" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="#donate" class="btn">Donate</a>
+            </div>
+            <button class="mobile-nav-toggle" id="mobile-nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="#" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" width="32" height="32">
+                    <path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm0 384c-97.2 0-176-78.8-176-176S158.8 80 256 80s176 78.8 176 176-78.8 176-176 176z"/>
+                    <path d="M256 128c-70.4 0-128 57.6-128 128s57.6 128 128 128 128-57.6 128-128-57.6-128-128-128zm0 224c-52.9 0-96-43.1-96-96s43.1-96 96-96 96 43.1 96 96-43.1 96-96 96z"/>
+                    <path d="M256 160c-8.8 0-16 7.2-16 16v144c0 8.8 7.2 16 16 16s16-7.2 16-16V176c0-8.8-7.2-16-16-16z"/>
+                    <path d="M256 336c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16s16-7.2 16-16v-16c0-8.8-7.2-16-16-16z"/>
+                </svg>
+                Global Light
+            </a>
+            <button class="mobile-menu-close" id="mobile-menu-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="mobile-nav-items">
+            <div class="mobile-nav-item">
+                <a href="#home" class="mobile-nav-link">Home</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#about" class="mobile-nav-link">About</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#missions" class="mobile-nav-link">Missions</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#resources" class="mobile-nav-link">Resources</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#events" class="mobile-nav-link">Events</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#prayer" class="mobile-nav-link">Prayer Wall</a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#donate" class="mobile-nav-link">Donate</a>
+            </div>
+        </div>
+        <div class="mobile-language-switcher">
+            <div class="form-group">
+                <label class="form-label">Select Language</label>
+                <select class="form-control">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="fr">Français</option>
+                    <option value="de">Deutsch</option>
+                    <option value="zh">中文</option>
+                    <option value="ar">العربية</option>
+                    <option value="ru">Русский</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="ja">日本語</option>
+                    <option value="hi">हिन्दी</option>
+                </select>
+            </div>
+        </div>
+        <div class="mobile-actions">
+            <button class="theme-toggle" id="mobile-theme-toggle">
+                <i class="fas fa-moon"></i> Toggle Dark Mode
+            </button>
+            <a href="#donate" class="btn">Donate Now</a>
+        </div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Spreading God's Light Across The World</h1>
+                <p class="hero-subtitle">Join our global mission to share the Gospel and bring hope to communities worldwide through faith, service, and love.</p>
+                <div class="hero-buttons">
+                    <a href="#missions" class="btn">Our Missions</a>
+                    <a href="#donate" class="btn accent">Support Our Work</a>
+                </div>
+            </div>
+        </div>
+        <div class="world-map-container">
+            <!-- SVG World Map with glow effect will be inserted via JavaScript -->
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section features">
+        <div class="container">
+            <h2 class="section-title">Our Ministry Focus</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-body">
+                        <div class="feature-icon">
+                            <i class="fas fa-bible"></i>
+                        </div>
+                        <h3 class="feature-title">Biblical Teaching</h3>
+                        <p>Access Scripture resources in multiple languages, daily devotionals, and in-depth Bible studies to grow in your faith.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-body">
+                        <div class="feature-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3 class="feature-title">Community Outreach</h3>
+                        <p>Join our global efforts to serve communities in need through humanitarian aid, education support, and spiritual care.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-body">
+                        <div class="feature-icon">
+                            <i class="fas fa-pray"></i>
+                        </div>
+                        <h3 class="feature-title">Prayer Network</h3>
+                        <p>Connect with believers worldwide through our global prayer wall, sharing requests and testimonies across borders.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-body">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3 class="feature-title">Discipleship</h3>
+                        <p>Discover resources to grow in your faith journey and learn how to disciple others in various cultural contexts.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-body">
+                        <div class="feature-icon">
+                            <i class="fas fa-church"></i>
+                        </div>
+                        <h3 class="feature-title">Church Planting</h3>
+                        <p>Support and learn about our initiatives to establish thriving Christian communities in unreached regions worldwide.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-body">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="feature-title">Biblical Training</h3>
+                        <p>Access free theological education resources designed for pastors and leaders serving in diverse global contexts.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Devotional Section -->
+    <section class="section devotional">
+        <div class="container">
+            <h2 class="section-title">Today's Devotional</h2>
+            <div class="devotional-card">
+                <div class="devotional-header">
+                    <p class="devotional-date" id="devotional-date">November 14, 2023</p>
+                    <h3 class="devotional-verse">"For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life."</h3>
+                    <p class="devotional-reference">John 3:16 (NIV)</p>
+                </div>
+                <div class="devotional-body">
+                    <p class="devotional-text">The message of John 3:16 resonates in every language and culture around the world. It is perhaps the most well-known verse in Scripture, yet its profundity can never be exhausted. The radical love of God displayed in the giving of His Son transcends cultural boundaries and speaks to the deepest need of every human heart.</p>
+                    <p class="devotional-text">As we carry this message to the nations, we are not bringing a foreign concept but the very truth for which every soul was created. God's love is not limited by geography, language, or cultural background. It is the universal remedy for the universal human condition.</p>
+                    <p class="devotional-text">Today, consider how this fundamental truth—that God gave His Son for you—shapes your daily life. How does it motivate your interactions with others, especially those from different backgrounds? How might God be calling you to participate in His global mission of love?</p>
+                    <p class="devotional-prayer">Dear Father, thank You for Your boundless love that crossed the greatest divide to reach us. Help us to comprehend the width, length, height, and depth of Your love in Christ, and empower us to share this love with people from every nation, tribe, and tongue. Make us ambassadors of Your reconciliation in this divided world. In Jesus' name, Amen.</p>
+                </div>
+                <div class="devotional-actions p-4">
+                    <select class="form-control" style="max-width: 200px;">
+                        <option>English (NIV)</option>
+                        <option>Español (NVI)</option>
+                        <option>Français (LSG)</option>
+                        <option>Deutsch (LUT)</option>
+                        <option>中文 (CUV)</option>
+                        <option>العربية (SVD)</option>
+                        <option>Русский (SYNO)</option>
+                        <option>हिन्दी (IRV)</option>
+                    </select>
+                    <div>
+                        <button class="btn secondary" style="margin-right: 0.5rem;"><i class="fas fa-share-alt"></i> Share</button>
+                        <button class="btn"><i class="fas fa-book-open"></i> Read More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Map Section -->
+    <section class="section" id="missions">
+        <div class="container">
+            <h2 class="section-title">Our Global Mission</h2>
+            <p class="text-center mb-8">Explore our ministry locations across the world and discover how God is working through our teams.</p>
+            
+            <div class="mission-map" id="mission-map">
+                <!-- World map SVG with ministry markers will be inserted via JavaScript -->
+                <div class="map-tooltip" id="map-tooltip"></div>
+            </div>
+            
+            <div class="grid grid-cols-3 gap-4 mt-8">
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3 class="feature-title">42</h3>
+                    <p>Countries Reached</p>
+                </div>
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-church"></i>
+                    </div>
+                    <h3 class="feature-title">127</h3>
+                    <p>Churches Planted</p>
+                </div>
+                <div class="text-center">
+                    <div class="feature-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="feature-title">250K+</h3>
+                    <p>People Served</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Global Testimonies</h2>
+            <div class="testimonial-container">
+                <div class="testimonial-slider" id="testimonial-slider">
+                    <div class="testimonial-track" id="testimonial-track">
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Maria Rodriguez" class="testimonial-avatar">
+                                <div class="testimonial-quote">
+                                    "The Bible study materials provided by this ministry have transformed our small church in rural Mexico. We now have 20 new believers who are growing in their faith daily. The Spanish resources are clear and culturally relevant."
+                                </div>
+                                <strong class="testimonial-author">Maria Rodriguez</strong>
+                                <div class="testimonial-location">
+                                    <img src="https://flagcdn.com/w20/mx.png" alt="Mexico" class="testimonial-flag">
+                                    <span>Oaxaca, Mexico</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <img src="https://randomuser.me/api/portraits/men/42.jpg" alt="Samuel Osei" class="testimonial-avatar">
+                                <div class="testimonial-quote">
+                                    "The leadership training program equipped me with biblical knowledge and practical skills to serve my community. Our church plant has grown from 15 to over 100 members in just two years. Praise God for this ministry!"
+                                </div>
+                                <strong class="testimonial-author">Samuel Osei</strong>
+                                <div class="testimonial-location">
+                                    <img src="https://flagcdn.com/w20/gh.png" alt="Ghana" class="testimonial-flag">
+                                    <span>Kumasi, Ghana</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Priya Sharma" class="testimonial-avatar">
+                                <div class="testimonial-quote">
+                                    "Finding Scripture in my native language was life-changing. The audio Bible program has allowed many non-readers in our village to hear God's Word for the first time. Ten families have come to faith through this ministry!"
+                                </div>
+                                <strong class="testimonial-author">Priya Sharma</strong>
+                                <div class="testimonial-location">
+                                    <img src="https://flagcdn.com/w20/in.png" alt="India" class="testimonial-flag">
+                                    <span>Bihar, India</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="David Chen" class="testimonial-avatar">
+                                <div class="testimonial-quote">
+                                    "The online discipleship program has been crucial for believers in our restricted country. We meet virtually for prayer and Bible study, and despite challenges, our underground network continues to grow through these digital resources."
+                                </div>
+                                <strong class="testimonial-author">David Chen</strong>
+                                <div class="testimonial-location">
+                                    <img src="https://flagcdn.com/w20/cn.png" alt="China" class="testimonial-flag">
+                                    <span>East Asia</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-controls">
+                    <button class="testimonial-button prev" id="testimonial-prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="testimonial-button next" id="testimonial-next">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="testimonial-indicator" id="testimonial-indicator">
+                    <span class="testimonial-dot active" data-index="0"></span>
+                    <span class="testimonial-dot" data-index="1"></span>
+                    <span class="testimonial-dot" data-index="2"></span>
+                    <span class="testimonial-dot" data-index="3"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prayer Wall Section -->
+    <section class="section prayer-wall" id="prayer">
+        <div class="container">
+            <h2 class="section-title">Global Prayer Wall</h2>
+            <p class="text-center mb-8">Share your prayer requests and join believers worldwide in lifting each other up in prayer.</p>
+            
+            <div class="prayer-form">
+                <div class="form-group">
+                    <label class="form-label">Your Name</label>
+                    <input type="text" class="form-control" placeholder="Enter your name (or remain anonymous)">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Your Prayer Request</label>
+                    <textarea class="form-control" placeholder="Share your prayer need..."></textarea>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" id="privacy">
+                        <label for="privacy">Make request private</label>
+                    </div>
+                    <button class="btn"><i class="fas fa-pray"></i> Submit Prayer</button>
+                </div>
+            </div>
+            
+            <div class="prayer-grid">
+                <div class="prayer-card">
+                    <div class="prayer-header">
+                        <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Elena Vargas" class="prayer-avatar">
+                        <div>
+                            <div class="prayer-author">Elena Vargas</div>
+                            <div class="prayer-country">
+                                <img src="https://flagcdn.com/w20/co.png" alt="Colombia" class="prayer-flag">
+                                <span>Colombia</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prayer-date">Posted 2 hours ago</div>
+                    <p class="prayer-text">Please pray for our community following the recent flooding. Many families have lost their homes. We are organizing relief efforts through our local church.</p>
+                    <div class="prayer-actions">
+                        <button class="btn secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;"><i class="fas fa-pray"></i> I'm Praying</button>
+                        <div class="prayer-count"><i class="fas fa-users"></i> 47 people praying</div>
+                    </div>
+                </div>
+                
+                <div class="prayer-card">
+                    <div class="prayer-header">
+                        <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Abioye Okeke" class="prayer-avatar">
+                        <div>
+                            <div class="prayer-author">Abioye Okeke</div>
+                            <div class="prayer-country">
+                                <img src="https://flagcdn.com/w20/ng.png" alt="Nigeria" class="prayer-flag">
+                                <span>Nigeria</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prayer-date">Posted 5 hours ago</div>
+                    <p class="prayer-text">Our youth ministry is hosting an evangelistic outreach next weekend. Please pray for the Holy Spirit to move powerfully and for many young people to come to know Jesus.</p>
+                    <div class="prayer-actions">
+                        <button class="btn secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;"><i class="fas fa-pray"></i> I'm Praying</button>
+                        <div class="prayer-count"><i class="fas fa-users"></i> 29 people praying</div>
+                    </div>
+                </div>
+                
+                <div class="prayer-card">
+                    <div class="prayer-header">
+                        <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Sarah Kim" class="prayer-avatar">
+                        <div>
+                            <div class="prayer-author">Sarah Kim</div>
+                            <div class="prayer-country">
+                                <img src="https://flagcdn.com/w20/kr.png" alt="South Korea" class="prayer-flag">
+                                <span>South Korea</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prayer-date">Posted 1 day ago</div>
+                    <p class="prayer-text">Our underground church is facing increased persecution. Please pray for protection, courage, and that we continue to share the gospel with boldness despite the challenges.</p>
+                    <div class="prayer-actions">
+                        <button class="btn secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;"><i class="fas fa-pray"></i> I'm Praying</button>
+                        <div class="prayer-count"><i class="fas fa-users"></i> 134 people praying</div>
+                    </div>
+                </div>
+                
+                <div class="prayer-card">
+                    <div class="prayer-header">
+                        <img src="https://randomuser.me/api/portraits/men/71.jpg" alt="James Wilson" class="prayer-avatar">
+                        <div>
+                            <div class="prayer-author">James Wilson</div>
+                            <div class="prayer-country">
+                                <img src="https://flagcdn.com/w20/us.png" alt="United States" class="prayer-flag">
+                                <span>United States</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prayer-date">Posted 2 days ago</div>
+                    <p class="prayer-text">Our family is preparing to serve as missionaries in Southeast Asia. Please pray for our visa process, financial support, and for our children as they prepare for this transition.</p>
+                    <div class="prayer-actions">
+                        <button class="btn secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;"><i class="fas fa-pray"></i> I'm Praying</button>
+                        <div class="prayer-count"><i class="fas fa-users"></i> 86 people praying</div>
+                    </div>
+                </div>
+                
+                <div class="prayer-card">
+                    <div class="prayer-header">
+                        <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Isabella Gomez" class="prayer-avatar">
+                        <div>
+                            <div class="prayer-author">Isabella Gomez</div>
+                            <div class="prayer-country">
+                                <img src="https://flagcdn.com/w20/br.png" alt="Brazil" class="prayer-flag">
+                                <span>Brazil</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prayer-date">Posted 3 days ago</div>
+                    <p class="prayer-text">Our church is launching a new program to provide education and meals for children in the favelas. Please pray for God's provision and for the safety of our volunteers.</p>
+                    <div class="prayer-actions">
+                        <button class="btn secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;"><i class="fas fa-pray"></i> I'm Praying</button>
+                        <div class="prayer-count"><i class="fas fa-users"></i> 53 people praying</div>
+                    </div>
+                </div>
+                
+                <div class="prayer-card">
+                    <div class="prayer-header">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Ahmed Mahmoud" class="prayer-avatar">
+                        <div>
+                            <div class="prayer-author">Ahmed Mahmoud</div>
+                            <div class="prayer-country">
+                                <img src="https://flagcdn.com/w20/eg.png" alt="Egypt" class="prayer-flag">
+                                <span>Egypt</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prayer-date">Posted 4 days ago</div>
+                    <p class="prayer-text">I recently converted to Christianity from Islam. My family has rejected me, and I lost my job. Please pray for provision and for reconciliation with my family.</p>
+                    <div class="prayer-actions">
+                        <button class="btn secondary" style="padding: 0.5rem 1rem; font-size: 0.875rem;"><i class="fas fa-pray"></i> I'm Praying</button>
+                        <div class="prayer-count"><i class="fas fa-users"></i> 215 people praying</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <button class="btn"><i class="fas fa-plus"></i> Load More Prayers</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="section events" id="events">
+        <div class="container">
+            <h2 class="section-title">Upcoming Events</h2>
+            <div class="grid grid-cols-3 gap-4">
+                <div class="event-card">
+                    <img src="https://source.unsplash.com/random/600x400/?conference,christian" alt="Global Missions Conference" class="event-img">
+                    <div class="event-body">
+                        <div class="event-date">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>Dec 10-12, 2023</span>
+                        </div>
+                        <h3 class="event-title">Global Missions Conference</h3>
+                        <p class="event-desc">Join ministry leaders from around the world for three days of inspiration, training, and networking focused on global evangelism strategies.</p>
+                        <a href="#" class="btn">Register Now</a>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Dallas, TX & Online</span>
+                        </div>
+                        <span>$49 - $149</span>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <img src="https://source.unsplash.com/random/600x400/?prayer,worship" alt="24-Hour Prayer Summit" class="event-img">
+                    <div class="event-body">
+                        <div class="event-date">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>Nov 25, 2023</span>
+                        </div>
+                        <h3 class="event-title">Global 24-Hour Prayer Summit</h3>
+                        <p class="event-desc">A virtual prayer gathering spanning all time zones with worship, teaching, and focused intercession for the nations.</p>
+                        <a href="#" class="btn">Join Prayer Event</a>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-location">
+                            <i class="fas fa-globe"></i>
+                            <span>Virtual Event</span>
+                        </div>
+                        <span>Free</span>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <img src="https://source.unsplash.com/random/600x400/?bible,study" alt="Bible Translation Workshop" class="event-img">
+                    <div class="event-body">
+                        <div class="event-date">
+                            <i class="far fa-calendar-alt"></i>
+                            <span>Jan 15-20, 2024</span>
+                        </div>
+                        <h3 class="event-title">Bible Translation Workshop</h3>
+                        <p class="event-desc">Hands-on training for translators working on Scripture projects in unreached language groups. Learn from experienced linguists.</p>
+                        <a href="#" class="btn">Apply Now</a>
+                    </div>
+                    <div class="event-footer">
+                        <div class="event-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Bangkok, Thailand</span>
+                        </div>
+                        <span>Scholarship Available</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <a href="#" class="btn"><i class="far fa-calendar-alt"></i> View All Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="section resources" id="resources">
+        <div class="container">
+            <h2 class="section-title">Ministry Resources</h2>
+            <p class="text-center mb-8">Access free materials to grow in your faith and serve others effectively.</p>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <img src="https://source.unsplash.com/random/600x400/?bible,devotional" alt="Devotional Guide" class="resource-img">
+                    <div class="resource-body">
+                        <span class="resource-tag">Spiritual Growth</span>
+                        <h3 class="resource-title">40-Day Devotional Guide</h3>
+                        <p class="resource-desc">Daily readings, prayers, and reflection questions to deepen your relationship with God.</p>
+                        <a href="#" class="btn">Download Free</a>
+                        <div class="resource-meta">
+                            <div class="resource-type">
+                                <i class="far fa-file-pdf"></i>
+                                <span>PDF</span>
+                            </div>
+                            <div class="resource-languages">
+                                <i class="fas fa-globe"></i>
+                                <span>12 languages</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <img src="https://source.unsplash.com/random/600x400/?pastor,teaching" alt="Leadership Training" class="resource-img">
+                    <div class="resource-body">
+                        <span class="resource-tag">Leadership</span>
+                        <h3 class="resource-title">Church Leadership Course</h3>
+                        <p class="resource-desc">Video-based training for pastors and ministry leaders serving in cross-cultural contexts.</p>
+                        <a href="#" class="btn">Access Course</a>
+                        <div class="resource-meta">
+                            <div class="resource-type">
+                                <i class="fas fa-video"></i>
+                                <span>Video Series</span>
+                            </div>
+                            <div class="resource-languages">
+                                <i class="fas fa-globe"></i>
+                                <span>8 languages</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <img src="https://source.unsplash.com/random/600x400/?children,sunday-school" alt="Children's Curriculum" class="resource-img">
+                    <div class="resource-body">
+                        <span class="resource-tag">Children</span>
+                        <h3 class="resource-title">Sunday School Curriculum</h3>
+                        <p class="resource-desc">Complete lessons, activities, and visual aids for teaching children of all ages about the Bible.</p>
+                        <a href="#" class="btn">Get Materials</a>
+                        <div class="resource-meta">
+                            <div class="resource-type">
+                                <i class="far fa-file-alt"></i>
+                                <span>Printable</span>
+                            </div>
+                            <div class="resource-languages">
+                                <i class="fas fa-globe"></i>
+                                <span>18 languages</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <img src="https://source.unsplash.com/random/600x400/?evangelism,outreach" alt="Evangelism Guide" class="resource-img">
+                    <div class="resource-body">
+                        <span class="resource-tag">Evangelism</span>
+                        <h3 class="resource-title">Cross-Cultural Gospel Presentation</h3>
+                        <p class="resource-desc">Methods and tools for effectively sharing the Gospel across different cultural worldviews.</p>
+                        <a href="#" class="btn">Download Guide</a>
+                        <div class="resource-meta">
+                            <div class="resource-type">
+                                <i class="far fa-file-pdf"></i>
+                                <span>PDF + Videos</span>
+                            </div>
+                            <div class="resource-languages">
+                                <i class="fas fa-globe"></i>
+                                <span>15 languages</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <a href="#" class="btn"><i class="fas fa-books"></i> Browse All Resources</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section class="section donation" id="donate">
+        <div class="container donation-container">
+            <div class="donation-content">
+                <h2 class="donation-title">Support Our Global Mission</h2>
+                <p class="donation-text">Your generous gifts enable us to share the Gospel, train leaders, provide humanitarian aid, and translate Scripture in communities worldwide. Every donation makes an eternal impact.</p>
+                
+                <div class="donation-stats">
+                    <div class="donation-stat">
+                        <div class="donation-number">92%</div>
+                        <div class="donation-label">Funds to Field</div>
+                    </div>
+                    <div class="donation-stat">
+                        <div class="donation-number">27K</div>
+                        <div class="donation-label">Monthly Donors</div>
+                    </div>
+                    <div class="donation-stat">
+                        <div class="donation-number">$25</div>
+                        <div class="donation-label">Avg. Monthly Gift</div>
+                    </div>
+                </div>
+                
+                <p class="donation-text">Join our community of global partners making a difference through prayer and giving. Together, we can reach the unreached with God's love.</p>
+            </div>
+            
+            <div class="donation-form">
+                <h3 class="mb-4" style="font-size: 1.5rem; font-weight: 700;">Make a Donation</h3>
+                
+                <div class="donation-options">
+                    <div class="donation-option active">
+                        <div class="donation-amount">$25</div>
+                        <div class="donation-frequency">Monthly</div>
+                    </div>
+                    <div class="donation-option">
+                        <div class="donation-amount">$50</div>
+                        <div class="donation-frequency">Monthly</div>
+                    </div>
+                    <div class="donation-option">
+                        <div class="donation-amount">$100</div>
+                        <div class="donation-frequency">Monthly</div>
+                    </div>
+                </div>
+                
+                <div class="donation-custom">
+                    <div class="donation-currency">
+                        <select class="form-control" style="width: auto;">
+                            <option>USD ($)</option>
+                            <option>EUR (€)</option>
+                            <option>GBP (£)</option>
+                            <option>CAD ($)</option>
+                            <option>AUD ($)</option>
+                            <option>JPY (¥)</option>
+                        </select>
+                    </div>
+                    <input type="text" class="form-control donation-input" placeholder="Custom amount">
+                </div>
+                
+                <div class="form-group mt-4">
+                    <label class="form-label">Giving Frequency</label>
+                    <select class="form-control">
+                        <option>Monthly (Recurring)</option>
+                        <option>One-time Gift</option>
+                        <option>Quarterly</option>
+                        <option>Annually</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Designation</label>
+                    <select class="form-control">
+                        <option>Where Most Needed</option>
+                        <option>Bible Translation Projects</option>
+                        <option>Church Planting</option>
+                        <option>Humanitarian Aid</option>
+                        <option>Leadership Training</option>
+                        <option>Children's Ministry</option>
+                    </select>
+                </div>
+                
+                <div class="payment-methods">
+                    <div class="payment-method active">
+                        <div class="payment-icon"><i class="far fa-credit-card"></i></div>
+                        <div>Card</div>
+                    </div>
+                    <div class="payment-method">
+                        <div class="payment-icon"><i class="fab fa-paypal"></i></div>
+                        <div>PayPal</div>
+                    </div>
+                    <div class="payment-method">
+                        <div class="payment-icon"><i class="fas fa-university"></i></div>
+                        <div>Bank</div>
+                    </div>
+                </div>
+                
+                <button class="btn w-100 mt-4">Complete Donation</button>
+                
+                <div class="text-center mt-4" style="font-size: 0.875rem; color: var(--text-light);">
+                    <i class="fas fa-lock"></i> Secure donation processed by Stripe
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="section newsletter">
+        <div class="container">
+            <div class="newsletter-container">
+                <h2 class="newsletter-title">Stay Connected</h2>
+                <p class="newsletter-text">Subscribe to our newsletter to receive ministry updates, prayer needs, and inspiring stories from around the world.</p>
+                
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Your email address">
+                    <button type="submit" class="newsletter-button btn">Subscribe</button>
+                </form>
+                
+                <p class="mt-4" style="font-size: 0.875rem; color: var(--text-light);">
+                    Available in 10 languages. You can unsubscribe at any time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" width="42" height="42">
+                            <path d="M256 48C141.1 48 48 141.1 48 256s93.1 208 208 208 208-93.1 208-208S370.9 48 256 48zm0 384c-97.2 0-176-78.8-176-176S158.8 80 256 80s176 78.8 176 176-78.8 176-176 176z"/>
+                            <path d="M256 128c-70.4 0-128 57.6-128 128s57.6 128 128 128 128-57.6 128-128-57.6-128-128-128zm0 224c-52.9 0-96-43.1-96-96s43.1-96 96-96 96 43.1 96 96-43.1 96-96 96z"/>
+                            <path d="M256 160c-8.8 0-16 7.2-16 16v144c0 8.8 7.2 16 16 16s16-7.2 16-16V176c0-8.8-7.2-16-16-16z"/>
+                            <path d="M256 336c-8.8 0-16 7.2-16 16v16c0 8.8 7.2 16 16 16s16-7.2 16-16v-16c0-8.8-7.2-16-16-16z"/>
+                        </svg>
+                        Global Light Ministry
+                    </div>
+                    <p class="footer-about">
+                        Spreading God's Word to all nations through evangelism, discipleship, and humanitarian outreach. Together, we're bringing hope to communities worldwide.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="footer-social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Quick Links</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Home</a>
+                        <a href="#" class="footer-link">About Us</a>
+                        <a href="#" class="footer-link">Our Missions</a>
+                        <a href="#" class="footer-link">Get Involved</a>
+                        <a href="#" class="footer-link">Resources</a>
+                        <a href="#" class="footer-link">Prayer Wall</a>
+                        <a href="#" class="footer-link">Donate</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Resources</h3>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Bible Study Materials</a>
+                        <a href="#" class="footer-link">Devotionals</a>
+                        <a href="#" class="footer-link">Online Courses</a>
+                        <a href="#" class="footer-link">Sermon Library</a>
+                        <a href="#" class="footer-link">Children's Resources</a>
+                        <a href="#" class="footer-link">Leadership Training</a>
+                        <a href="#" class="footer-link">Missionary Stories</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="footer-title">Contact Us</h3>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="footer-contact-text">
+                            1234 Global Ministry Ln<br>
+                            Houston, TX 77001, USA
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon"><i class="fas fa-phone"></i></div>
+                        <div class="footer-contact-text">
+                            +1 (123) 456-7890
+                        </div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <div class="footer-contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="footer-contact-text">
+                            info@globallightministry.org
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    &copy; 2023 Global Light Ministry. All Rights Reserved. | <a href="#" style="color: var(--primary-light);">Privacy Policy</a> | <a href="#" style="color: var(--primary-light);">Terms of Use</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot -->
+    <div class="chatbot">
+        <div class="chatbot-toggle" id="chatbot-toggle">
+            <i class="fas fa-comment-alt"></i>
+        </div>
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <div class="chatbot-title">
+                    <div class="chatbot-avatar">P</div>
+                    <div>
+                        <strong>Paul</strong>
+                        <div style="font-size: 0.875rem; opacity: 0.9;">Ministry Assistant</div>
+                    </div>
+                </div>
+                <div class="chatbot-close" id="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </div>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="chatbot-message bot">
+                    <div class="message-content">
+                        Greetings in Christ! I'm Paul, your virtual ministry assistant. How can I help you today? I can answer questions about our ministry, help you find resources, or assist with prayer requests.
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" placeholder="Type your message..." id="chatbot-input-field">
+                <button id="chatbot-send"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+            const body = document.body;
+            const themeIcon = document.querySelector('#theme-toggle i');
+            const mobileThemeIcon = document.querySelector('#mobile-theme-toggle i');
+
+            // Check for saved theme preference or respect OS preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.classList.replace('fa-moon', 'fa-sun');
+                mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+
+            // Handle theme toggle click
+            function toggleTheme() {
+                if (body.getAttribute('data-theme') === 'dark') {
+                    body.setAttribute('data-theme', 'light');
+                    themeIcon.classList.replace('fa-sun', 'fa-moon');
+                    mobileThemeIcon.classList.replace('fa-sun', 'fa-moon');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    body.setAttribute('data-theme', 'dark');
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                    mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                }
+            }
+
+            themeToggle.addEventListener('click', toggleTheme);
+            mobileThemeToggle.addEventListener('click', toggleTheme);
+
+            // Mobile Menu
+            const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+            const mobileMenuClose = document.getElementById('mobile-menu-close');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('overlay');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            mobileNavToggle.addEventListener('click', function() {
+                mobileMenu.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            mobileMenuClose.addEventListener('click', closeMobileMenu);
+            overlay.addEventListener('click', closeMobileMenu);
+            
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
+            });
+
+            // Testimonial Slider
+            const testimonialTrack = document.getElementById('testimonial-track');
+            const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+            const prevButton = document.getElementById('testimonial-prev');
+            const nextButton = document.getElementById('testimonial-next');
+            const dots = document.querySelectorAll('.testimonial-dot');
+            let currentIndex = 0;
+            const slideWidth = 100; // 100%
+
+            function goToSlide(index) {
+                if (index < 0) {
+                    index = testimonialSlides.length - 1;
+                } else if (index >= testimonialSlides.length) {
+                    index = 0;
+                }
+                currentIndex = index;
+                testimonialTrack.style.transform = `translateX(-${slideWidth * currentIndex}%)`;
+                
+                // Update active dot
+                dots.forEach((dot, i) => {
+                    if (i === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+
+            prevButton.addEventListener('click', () => goToSlide(currentIndex - 1));
+            nextButton.addEventListener('click', () => goToSlide(currentIndex + 1));
+            
+            dots.forEach((dot, i) => {
+                dot.addEventListener('click', () => goToSlide(i));
+            });
+
+            // Auto-advance testimonials
+            setInterval(() => {
+                goToSlide(currentIndex + 1);
+            }, 6000);
+
+            // World Map (simplified for this example)
+            const worldMapContainer = document.querySelector('.world-map-container');
+            worldMapContainer.innerHTML = `
+                <svg class="map-svg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet">
+                    <!-- Simplified world map paths would go here -->
+                    <path class="map-country" d="M250,120 L350,120 L350,180 L250,180 Z" />
+                    <path class="map-country" d="M360,120 L460,120 L460,180 L360,180 Z" />
+                    <path class="map-country" d="M250,190 L350,190 L350,250 L250,250 Z" />
+                    <path class="map-country" d="M360,190 L460,190 L460,250 L360,250 Z" />
+                    <path class="map-country" d="M470,120 L570,120 L570,180 L470,180 Z" />
+                    <path class="map-country" d="M470,190 L570,190 L570,250 L470,250 Z" />
+                    <path class="map-country" d="M580,120 L680,120 L680,180 L580,180 Z" />
+                    <path class="map-country" d="M580,190 L680,190 L680,250 L580,250 Z" />
+                    <path class="map-country" d="M250,260 L350,260 L350,320 L250,320 Z" />
+                    <path class="map-country" d="M360,260 L460,260 L460,320 L360,320 Z" />
+                    <path class="map-country" d="M470,260 L570,260 L570,320 L470,320 Z" />
+                    <path class="map-country" d="M580,260 L680,260 L680,320 L580,320 Z" />
+                    
+                    <!-- Ministry locations (dots) -->
+                    <circle class="map-marker" cx="300" cy="150" r="5" />
+                    <circle class="map-marker" cx="400" cy="220" r="5" />
+                    <circle class="map-marker" cx="520" cy="150" r="5" />
+                    <circle class="map-marker" cx="630" cy="290" r="5" />
+                    <circle class="map-marker" cx="520" cy="290" r="5" />
+                    <circle class="map-marker" cx="300" cy="290" r="5" />
+                </svg>
+            `;
+
+            // Mission Map
+            const missionMap = document.getElementById('mission-map');
+            const mapTooltip = document.getElementById('map-tooltip');
+            
+            // Simplified world map for example
+            missionMap.innerHTML = `
+                <svg class="map-svg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet">
+                    <!-- Simplified world map paths would go here -->
+                    <path class="map-country" data-name="North America" d="M150,120 L300,120 L300,200 L150,200 Z" />
+                    <path class="map-country" data-name="South America" d="M200,210 L270,210 L270,330 L200,330 Z" />
+                    <path class="map-country" data-name="Europe" d="M400,120 L480,120 L480,180 L400,180 Z" />
+                    <path class="map-country" data-name="Africa" d="M380,190 L460,190 L460,330 L380,330 Z" />
+                    <path class="map-country" data-name="Asia" d="M490,120 L650,120 L650,250 L490,250 Z" />
+                    <path class="map-country" data-name="Australia" d="M600,260 L670,260 L670,320 L600,320 Z" />
+                    
+                    <!-- Ministry locations (dots) -->
+                    <circle class="map-marker" cx="200" cy="150" r="5" data-info="Houston, TX: Global headquarters and training center" />
+                    <circle class="map-marker" cx="450" cy="150" r="5" data-info="Eastern Europe: Church planting and leadership development" />
+                    <circle class="map-marker" cx="420" cy="230" r="5" data-info="Kenya: Bible translation project and community development" />
+                    <circle class="map-marker" cx="550" cy="190" r="5" data-info="India: Pastoral training and children's ministry" />
+                    <circle class="map-marker" cx="630" cy="150" r="5" data-info="Southeast Asia: Underground church support and discipleship" />
+                    <circle class="map-marker" cx="230" cy="250" r="5" data-info="Brazil: Youth outreach and evangelism training" />
+                    <circle class="map-marker" cx="640" cy="290" r="5" data-info="Australia: Regional coordination and missionary sending" />
+                </svg>
+            `;
+
+            // Map interaction
+            const mapMarkers = document.querySelectorAll('.map-marker');
+            const mapCountries = document.querySelectorAll('.map-country');
+            
+            mapMarkers.forEach(marker => {
+                marker.addEventListener('mouseenter', function(e) {
+                    const info = this.getAttribute('data-info');
+                    mapTooltip.innerHTML = info;
+                    mapTooltip.style.left = `${e.pageX - missionMap.getBoundingClientRect().left + 10}px`;
+                    mapTooltip.style.top = `${e.pageY - missionMap.getBoundingClientRect().top - 40}px`;
+                    mapTooltip.style.opacity = 1;
+                });
+                
+                marker.addEventListener('mouseleave', function() {
+                    mapTooltip.style.opacity = 0;
+                });
+            });
+            
+            mapCountries.forEach(country => {
+                country.addEventListener('mouseenter', function(e) {
+                    const name = this.getAttribute('data-name');
+                    mapTooltip.innerHTML = name;
+                    mapTooltip.style.left = `${e.pageX - missionMap.getBoundingClientRect().left + 10}px`;
+                    mapTooltip.style.top = `${e.pageY - missionMap.getBoundingClientRect().top - 40}px`;
+                    mapTooltip.style.opacity = 1;
+                });
+                
+                country.addEventListener('mouseleave', function() {
+                    mapTooltip.style.opacity = 0;
+                });
+            });
+
+            // Chatbot functionality
+            const chatbotToggle = document.getElementById('chatbot-toggle');
+            const chatbotWindow = document.getElementById('chatbot-window');
+            const chatbotClose = document.getElementById('chatbot-close');
+            const chatbotMessages = document.getElementById('chatbot-messages');
+            const chatbotInputField = document.getElementById('chatbot-input-field');
+            const chatbotSend = document.getElementById('chatbot-send');
+
+            chatbotToggle.addEventListener('click', function() {
+                chatbotWindow.style.display = chatbotWindow.style.display === 'block' ? 'none' : 'block';
+            });
+
+            chatbotClose.addEventListener('click', function() {
+                chatbotWindow.style.display = 'none';
+            });
+
+            function sendMessage() {
+                const message = chatbotInputField.value.trim();
+                if (!message) return;
+
+                // Add user message
+                addMessage(message, 'user');
+                chatbotInputField.value = '';
+
+                // Simulate bot response
+                setTimeout(() => {
+                    const botResponse = getBotResponse(message);
+                    addMessage(botResponse, 'bot');
+                    // Scroll to bottom
+                    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+                }, 1000);
+            }
+
+            chatbotSend.addEventListener('click', sendMessage);
+            chatbotInputField.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            function addMessage(text, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.classList.add('chatbot-message', sender);
+                
+                const messageContent = document.createElement('div');
+                messageContent.classList.add('message-content');
+                messageContent.textContent = text;
+                
+                messageDiv.appendChild(messageContent);
+                chatbotMessages.appendChild(messageDiv);
+                
+                // Scroll to the latest message
+                chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            }
+
+            function getBotResponse(message) {
+                message = message.toLowerCase();
+                
+                if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
+                    return "Hello! I'm Paul, the ministry assistant. How can I help you today?";
+                } else if (message.includes('mission') || message.includes('about')) {
+                    return "Our mission is to spread God's Word to all nations through evangelism, discipleship, and humanitarian outreach. We operate in over 40 countries, sharing Christ's love through various ministries.";
+                } else if (message.includes('donate') || message.includes('give')) {
+                    return "Thank you for your interest in supporting our ministry! You can make a donation through our website's secure giving portal. Your gift helps us reach more people with the Gospel and provide practical assistance to communities in need.";
+                } else if (message.includes('bible') || message.includes('verse') || message.includes('scripture')) {
+                    return "We offer Bible resources in over 50 languages. You can access free study materials, devotionals, and Scripture portions through our Resources section. Would you like me to point you to a specific resource?";
+                } else if (message.includes('pray') || message.includes('prayer')) {
+                    return "Prayer is the foundation of our ministry! You can submit prayer requests through our Prayer Wall, join our global prayer network, or access guided prayers in our Resources section. How can we pray for you today?";
+                } else if (message.includes('volunteer') || message.includes('help') || message.includes('serve')) {
+                    return "We have many opportunities to serve, both locally and globally! From short-term mission trips to remote volunteer positions, there's a place for your gifts. Check our 'Get Involved' section or contact our volunteer coordinator at volunteer@globallightministry.org";
+                } else if (message.includes('thank')) {
+                    return "You're welcome! If you have any other questions, I'm here to help. God bless you!";
+                } else {
+                    return "I'm not sure I understand. Could you rephrase your question? I can help with information about our ministry, resources, giving opportunities, or how to get involved.";
+                }
+            }
+
+            // Update devotional date to current date
+            const devotionalDate = document.getElementById('devotional-date');
+            const currentDate = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            devotionalDate.textContent = currentDate.toLocaleDateString('en-US', options);
+
+            // Donation option selection
+            const donationOptions = document.querySelectorAll('.donation-option');
+            donationOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    donationOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Payment method selection
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80, // Adjust for header height
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
